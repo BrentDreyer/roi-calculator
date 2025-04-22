@@ -1,4 +1,24 @@
 import { useState } from 'react';
+
+type Results = {
+  currentReturn: number;
+  projectedReturn: number;
+  improvement: number;
+  marketShareImpact: number;
+  currentROI: number;
+  projectedROI: number;
+  aiImplementationCost: number;
+  monthlyAICost: number;
+  firstYearAICost: number;
+  implementationTime: number;
+  strategies: {
+    title: string;
+    description: string;
+    impact: string;
+    timeframe: string;
+    icon: JSX.Element;
+  }[];
+};
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ArrowRight, ArrowUpRight, Zap, BarChart2, Target, TrendingUp, UserPlus } from 'lucide-react';
 
@@ -16,9 +36,9 @@ const AIMarketingCalculator = () => {
     includeAICosts: true
   });
   
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<Results | null>(null);
   
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -216,8 +236,8 @@ const AIMarketingCalculator = () => {
   };
   
   const chartData = results ? [
-    { name: 'Current ROI', value: results.currentROI.toFixed(1) },
-    { name: 'AI-Enhanced ROI', value: results.projectedROI.toFixed(1) }
+    { name: 'Current ROI', value: parseFloat(results.currentROI.toFixed(1)) },
+    { name: 'AI-Enhanced ROI', value: parseFloat(results.projectedROI.toFixed(1)) }
   ] : [];
   
   return (
@@ -632,7 +652,7 @@ const AIMarketingCalculator = () => {
       )}
       
       <div className="bg-gray-50 p-4 border-t border-gray-200 text-center text-sm text-gray-500">
-        Â© 2025 Brent Dreyer â€¢ DataEM.com AI Marketing Consultancy â€¢ Helping CEOs Drive Sales & Market Share Through AI-Enhanced Marketing
+        Â© 2025 Brent Dreyer â€¢ DataEM.com - AI Marketing Consultancy â€¢ Helping CEOs Drive Sales & Market Share Through AI-Enhanced Marketing
       </div>
     </div>
   );
