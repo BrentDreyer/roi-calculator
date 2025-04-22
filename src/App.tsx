@@ -49,10 +49,9 @@ const AIMarketingCalculator = () => {
 
   const calculateROI = () => {
     // Base ROI ranges by industry
-    const industryROI = {
-      'technology': { min: 2.8, max: 8.5, avg: 5.2 },
-  [key: string]: { min: number; max: number; avg: number }
-      'retail': { min: 1.9, max: 6.2, avg: 3.8 },
+    const industryROI: Record<string, { min: number; max: number; avg: number }> = {
+  'technology': { min: 2.8, max: 8.5, avg: 5.2 },
+  'retail': { min: 1.9, max: 6.2, avg: 3.8 },
       'healthcare': { min: 1.8, max: 5.5, avg: 3.4 },
       'financial': { min: 2.1, max: 7.8, avg: 4.3 },
       'manufacturing': { min: 1.6, max: 4.8, avg: 2.9 },
@@ -60,27 +59,24 @@ const AIMarketingCalculator = () => {
     };
     
     // Company size factors
-    const sizeFactor = {
-      'small': 0.85,
-  [key: string]: number
-      'medium': 1.0,
+    const sizeFactor: Record<string, number> = {
+  'small': 0.85,
+  'medium': 1.0,
       'large': 1.15,
       'enterprise': 1.25
     };
     
     // AI impact factors
-    const aiImpact = {
-      'minimal': { current: 1.0, potential: 1.35 },
-  [key: string]: { current: number; potential: number }
-      'moderate': { current: 1.2, potential: 1.55 },
+    const aiImpact: Record<string, { current: number; potential: number }> = {
+  'minimal': { current: 1.0, potential: 1.35 },
+  'moderate': { current: 1.2, potential: 1.55 },
       'advanced': { current: 1.4, potential: 1.7 }
     };
     
     // Goal multipliers
-    const goalMultiplier = {
-      'sales': 1.15,
-  [key: string]: number
-      'market_share': 1.25,
+    const goalMultiplier: Record<string, number> = {
+  'sales': 1.15,
+  'market_share': 1.25,
       'customer_retention': 1.3,
       'brand_awareness': 0.85
     };
@@ -656,12 +652,12 @@ const AIMarketingCalculator = () => {
         </div>
       )}
       
-       <div className="bg-gray-50 p-4 border-t border-gray-200 text-center text-sm text-gray-500">
-         Â© 2025 Brent Dreyer â€¢ DataEM.com - AI Marketing Consultancy â€¢ Helping CEOs Drive Sales & Market Share Through AI-Enhanced Marketing
-       </div>
-     </div>
-   );
- };
- 
- const App = AIMarketingCalculator;
+      <div className="bg-gray-50 p-4 border-t border-gray-200 text-center text-sm text-gray-500">
+        Â© 2025 Brent Dreyer â€¢ DataEM.com - AI Marketing Consultancy â€¢ Helping CEOs Drive Sales & Market Share Through AI-Enhanced Marketing
+      </div>
+    </div>
+  );
+};
+
+const App = AIMarketingCalculator;
 export default App;
