@@ -131,10 +131,9 @@ const AIMarketingCalculator = () => {
     const improvement = ((potentialNetReturn - currentReturn) / currentReturn) * 100;
     
     // Market share impact
-    const marketShareImpactBase = {
-      'technology': 0.18,
-  [key: string]: number
-      'retail': 0.15,
+    const marketShareImpactBase: Record<string, number> = {
+  'technology': 0.18,
+  'retail': 0.15,
       'healthcare': 0.12,
       'financial': 0.11, 
       'manufacturing': 0.13,
